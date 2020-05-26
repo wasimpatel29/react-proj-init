@@ -16,5 +16,4 @@ a zip file which will include code template to build application.
     * `npm start`
     * `npm test`
     * `npm run build`
-    * `npm install react-radio-group`
     
