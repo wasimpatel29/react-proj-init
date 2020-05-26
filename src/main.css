@@ -1,0 +1,91 @@
+.logo-head { 
+    background-color: #fff; 
+    padding:20px 50px;
+}
+
+.hero_title {
+    font: 25px "ubuntu",Verdana,Arial,sans-serif;
+    color: #2B0A3D;
+    padding-left: 50px;
+}
+
+.page-conatiner {
+    padding-left: 50px;
+}
+
+.content-header {
+    font: 1.25rem/1.5 "ubuntu",Verdana,Arial,sans-serif;
+    color: #2B0A3D;
+    word-break: break-word;
+}
+
+.content-text {
+    color: #000;
+    font: 1rem/1.67 "ubuntu",Verdana,Arial,sans-serif;
+    letter-spacing: .2px;
+}
+
+.submit-button {
+    margin-bottom: 24px;
+    display: inline-block;
+    font: 1rem/1 "ubuntu-md",Verdana,Arial,sans-serif;
+    min-width: 195px;
+    border-radius: 100px;
+    text-align: center;
+    white-space: nowrap;
+    transition: all .5s ease;
+    padding: 0 20px;
+    color: #0070ad;
+    border: 2px solid #0070ad;
+    line-height: 48px;
+}
+
+.submit-button-hover:hover {
+    color: white;
+    background-color: #0070ad;
+}
+
+.flex-container {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    max-width: 100%;
+    width: 100%;
+}
+
+.section--grey {
+    background: #ececec;
+    position: relative;
+    width: 70%;
+    margin-left: 50px;
+}
+
+.card_default {
+    display: flex;
+    flex-flow: column nowrap;
+    background: #fff;
+    transition: all .5s ease;
+    height: 100%;
+    position: relative;
+}
+
+.div-space {
+    width: 50%;
+}
+
+input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+ textarea {
+    width: 30%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+ } 
