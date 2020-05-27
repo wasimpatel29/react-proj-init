@@ -122,12 +122,13 @@ class Main extends React.Component {
             </div>
             <br/>
             <div class="flex-container">
-                <div name="dependencies" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
-                    <label class="content-header">Dependencies</label>
+                <div name="messaging" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
+                    <label class="content-header">Messaging</label>
                     <div class="content-text">
-                        <input type="radio" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience<br/>
-                        <input type="radio" name="dependencies" value="Actuator" onChange={this.onDependenciesChange}/>Actuator<br/>
-                        <input type="radio" name="dependencies" value="SpringBoot" onChange={this.onDependenciesChange} checked/>SpringBoot<br/>
+                        <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} checked/>Kafka<br/>
+                        <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange}/>RabbitMQ<br/>
+                        <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange}/>JMS<br/>
+                        <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange}/>ActiveMQ<br/>
                     </div>
                 </div>
                 <br/>
@@ -143,13 +144,12 @@ class Main extends React.Component {
             </div>
             <br/>
             <div class="flex-container">
-                <div name="messaging" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
-                    <label class="content-header">Messaging</label>
+                <div name="dependencies" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
+                    <label class="content-header">Dependencies</label>
                     <div class="content-text">
-                        <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} checked/>Kafka<br/>
-                        <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange}/>RabbitMQ<br/>
-                        <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange}/>JMS<br/>
-                        <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange}/>ActiveMQ<br/>
+                        <input type="radio" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience<br/>
+                        <input type="radio" name="dependencies" value="Actuator" onChange={this.onDependenciesChange}/>Actuator<br/>
+                        <input type="radio" name="dependencies" value="SpringBoot" onChange={this.onDependenciesChange} checked/>SpringBoot<br/>
                     </div>
                 </div>
             </div>
