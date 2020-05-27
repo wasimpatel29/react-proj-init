@@ -8,7 +8,7 @@ class Main extends React.Component {
             projectName: 'sample',
             build: 'Gradle',
             language: 'Java 8',
-            dependencies: 'resilience',
+            dependencies: 'SpringBoot',
             artifactory: 'some location',
             database: 'Oracle 12c',
             messaging: 'kafka',
@@ -79,6 +79,7 @@ class Main extends React.Component {
     render() {
         return (
             <form>
+            <link rel='stylesheet' id='all-css-0' href='https://www.capgemini.com/_static/??-eJx9jUEOgzAMBD9UYyqVA4eqbwnBUJckjmKjit83iAtVpV5XOzP4zsDJh3UkRa+KI6vhEMQvEHgormyotgVqIqemHi5YCS/JKBnmsM6cKjgDBafGHl4yKDpVssN33n94e1Lcuy7PVP0Mi8QsykZnxdH/085FMhWYpMSv9nmHqVRwtzzi/dr1bdvd2q7/AKaIX44=' type='text/css' media='all' />
             <div class="logo-head">    
             <img src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg" alt="Capgemini Worldwide"/>
             </div>
@@ -86,80 +87,76 @@ class Main extends React.Component {
                 Project initializer will help you build a template project based on the details.
             </p>
             <br/>
-            <div class="page-conatiner section--grey">
-            <div name="project-name" class="div-space">
-                <div>
-                    <label class="content-header">Project Name</label>
-                </div>
+            <div class="page-conatiner">
+            <div name="project-name" class="div-space card_default card_default--hovered hover--grey card_default--grey">
+                <label class="content-header">Project Name</label>
                 <div class="content-text">
                     <input type="text" onChange={this.onProjectNameChange}/>
                 </div>
-            </div>    
+            </div>   
             <br/>
             <div class="flex-container">
-                <div name="language" class="div-space">
+                <div name="language" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Language</label>
                     <div class="content-text">
-                        <input type="radio" name="language" value="Java 8" onChange={this.onLanguageRadioChange}/>Java 8
-                        <input type="radio" name="language" value="Kotlin" onChange={this.onLanguageRadioChange}/>Kotlin
-                        <input type="radio" name="language" value="Groovy" onChange={this.onLanguageRadioChange}/>Groovy
+                        <input type="radio" name="language" value="Java 8" onChange={this.onLanguageRadioChange} checked/>Java 8<br/>
+                        <input type="radio" name="language" value="Kotlin" onChange={this.onLanguageRadioChange}/>Kotlin<br/>
+                        <input type="radio" name="language" value="Groovy" onChange={this.onLanguageRadioChange}/>Groovy<br/>
                     </div>
                 </div>
-                <div name="project-type" class="div-space">
+                <div name="project-type" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header ">Project Type</label>
                     <div class="content-text">
-                        <input type="radio" name="build" value="Gradle" onChange={this.onBuildChange}/>Gradle
-                        <input type="radio" name="build" value="Maven" onChange={this.onBuildChange}/>Maven
+                        <input type="radio" name="build" value="Gradle" onChange={this.onBuildChange} checked/>Gradle<br/>
+                        <input type="radio" name="build" value="Maven" onChange={this.onBuildChange}/>Maven<br/>
                     </div>
                 </div>
             </div>
             <br/>
             <div class="flex-container">
-                <div name="dependencies" class="div-space">
+                <div name="dependencies" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Dependencies</label>
                     <div class="content-text">
-                        <input type="radio" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience
-                        <input type="radio" name="dependencies" value="Actuator" onChange={this.onDependenciesChange}/>Actuator
-                        <input type="radio" name="dependencies" value="SpringBoot" onChange={this.onDependenciesChange}/>SpringBoot
+                        <input type="radio" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience<br/>
+                        <input type="radio" name="dependencies" value="Actuator" onChange={this.onDependenciesChange}/>Actuator<br/>
+                        <input type="radio" name="dependencies" value="SpringBoot" onChange={this.onDependenciesChange} checked/>SpringBoot<br/>
                     </div>
                 </div>
                 <br/>
-                <div name="database" class="div-space">
+                <div name="database" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Database</label>
                     <div class="content-text">
-                        <input type="radio" name="database" value="Oracle 12c" onChange={this.onDatabaseChange}/>Oracle 12c
-                        <input type="radio" name="database" value="Mongo DB" onChange={this.onDatabaseChange}/>Mongo DB
-                        <input type="radio" name="database" value="MySql" onChange={this.onDatabaseChange}/>MySql
-                        <input type="radio" name="database" value="DB2" onChange={this.onDatabaseChange}/>DB2
+                        <input type="radio" name="database" value="Oracle 12c" onChange={this.onDatabaseChange} checked/>Oracle 12c<br/>
+                        <input type="radio" name="database" value="Mongo DB" onChange={this.onDatabaseChange}/>Mongo DB<br/>
+                        <input type="radio" name="database" value="MySql" onChange={this.onDatabaseChange}/>MySql<br/>
+                        <input type="radio" name="database" value="DB2" onChange={this.onDatabaseChange}/>DB2<br/>
                     </div>
                 </div>
             </div>
             <br/>
             <div class="flex-container">
-                <div name="messaging" class="div-space">
+                <div name="messaging" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Messaging</label>
                     <div class="content-text">
-                        <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange}/>Kafka
-                        <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange}/>RabbitMQ
-                        <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange}/>JMS
-                        <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange}/>ActiveMQ
+                        <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} checked/>Kafka<br/>
+                        <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange}/>RabbitMQ<br/>
+                        <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange}/>JMS<br/>
+                        <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange}/>ActiveMQ<br/>
                     </div>
                 </div>
                 <br/>
-                <div name="artifactory-url" class="div-space">
-                    <div>
-                        <label class="content-header">Artifactory URL</label>
-                    </div>
+                <div name="artifactory-url" class="div-space card_default card_default--hovered hover--grey card_default--grey">
+                    <label class="content-header">Artifactory URL</label>
                     <div class="content-text">
                         <input type="text" onChange={this.onArtifactoryChange}/>
                     </div>
                 </div> 
             </div>
             <br/>
-            <div name="description">
+            <div name="description" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                 <label class="content-header">Description</label>
                 <div class="content-text">
-                    <textarea onChange={this.onDescriptionChange}/>
+                    <input type="text" onChange={this.onDescriptionChange}/>
                 </div>
             </div>
             <br/>
