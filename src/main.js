@@ -88,33 +88,41 @@ class Main extends React.Component {
             </p>
             <br/>
             <div class="page-conatiner">
-            <div name="project-name" class="div-space card_default card_default--hovered hover--grey card_default--grey">
-                <label class="content-header">Project Name</label>
-                <div class="content-text">
-                    <input type="text" onChange={this.onProjectNameChange}/>
-                </div>
-            </div>   
-            <br/>
             <div class="flex-container">
-                <div name="language" class="div-space card_default card_default--hovered hover--grey card_default--grey">
-                    <label class="content-header">Language</label>
-                    <div class="content-text">
-                        <input type="radio" name="language" value="Java 8" onChange={this.onLanguageRadioChange} checked/>Java 8<br/>
-                        <input type="radio" name="language" value="Kotlin" onChange={this.onLanguageRadioChange}/>Kotlin<br/>
-                        <input type="radio" name="language" value="Groovy" onChange={this.onLanguageRadioChange}/>Groovy<br/>
-                    </div>
+                <div name="project-metadata" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
+                    <label class="content-header">Project Metadata</label>
+                        <label class="label-project-metadata">Name</label>
+                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <label class="label-project-metadata">Description</label> 
+                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <label class="label-project-metadata">Group</label> 
+                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <label class="label-project-metadata">Package Name</label> 
+                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <label class="label-project-metadata">Artifact</label> 
+                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
                 </div>
-                <div name="project-type" class="div-space card_default card_default--hovered hover--grey card_default--grey">
-                    <label class="content-header ">Project Type</label>
-                    <div class="content-text">
-                        <input type="radio" name="build" value="Gradle" onChange={this.onBuildChange} checked/>Gradle<br/>
-                        <input type="radio" name="build" value="Maven" onChange={this.onBuildChange}/>Maven<br/>
+                <div class="flex-column">
+                    <div name="language" class="card_default card_default--hovered hover--grey card_default--grey">
+                        <label class="content-header">Language</label>
+                        <div class="content-text">
+                            <input type="radio" name="language" value="Java 8" onChange={this.onLanguageRadioChange} checked/>Java 8<br/>
+                            <input type="radio" name="language" value="Kotlin" onChange={this.onLanguageRadioChange}/>Kotlin<br/>
+                            <input type="radio" name="language" value="Groovy" onChange={this.onLanguageRadioChange}/>Groovy<br/>
+                        </div>
+                    </div>
+                    <div name="project-type" class="margin-top card_default card_default--hovered hover--grey card_default--grey">
+                        <label class="content-header ">Project Type</label>
+                        <div class="content-text">
+                            <input type="radio" name="build" value="Gradle" onChange={this.onBuildChange} checked/>Gradle<br/>
+                            <input type="radio" name="build" value="Maven" onChange={this.onBuildChange}/>Maven<br/>
+                        </div>
                     </div>
                 </div>
             </div>
             <br/>
             <div class="flex-container">
-                <div name="dependencies" class="div-space card_default card_default--hovered hover--grey card_default--grey">
+                <div name="dependencies" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Dependencies</label>
                     <div class="content-text">
                         <input type="radio" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience<br/>
@@ -135,7 +143,7 @@ class Main extends React.Component {
             </div>
             <br/>
             <div class="flex-container">
-                <div name="messaging" class="div-space card_default card_default--hovered hover--grey card_default--grey">
+                <div name="messaging" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Messaging</label>
                     <div class="content-text">
                         <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} checked/>Kafka<br/>
@@ -144,26 +152,14 @@ class Main extends React.Component {
                         <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange}/>ActiveMQ<br/>
                     </div>
                 </div>
-                <br/>
-                <div name="artifactory-url" class="div-space card_default card_default--hovered hover--grey card_default--grey">
-                    <label class="content-header">Artifactory URL</label>
-                    <div class="content-text">
-                        <input type="text" onChange={this.onArtifactoryChange}/>
-                    </div>
-                </div> 
-            </div>
-            <br/>
-            <div name="description" class="div-space card_default card_default--hovered hover--grey card_default--grey">
-                <label class="content-header">Description</label>
-                <div class="content-text">
-                    <input type="text" onChange={this.onDescriptionChange}/>
-                </div>
             </div>
             <br/>
                 <input type="Submit"  class="submit-button submit-button-hover" onClick={this.alertState}/>
             </div>
+            <div class="copyright">
+                <p>All rights reserved by Capgemini. <span>Copyright &copy; 2020</span></p>
+            </div>
         </form>
-        
         );
     }
 }

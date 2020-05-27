@@ -15,7 +15,7 @@
 }
 
 .content-header {
-    font: 20px "ubuntu",Verdana,Arial,sans-serif;
+    font: 25px "ubuntu",Verdana,Arial,sans-serif;
     color: #2B0A3D;
     word-break: break-word;
     margin: 10px 10px;
@@ -56,6 +56,27 @@
     width: 100%;
 }
 
+.flex-column {
+    padding: 5px;
+    display: flex;
+    flex-wrap: column wrap;
+    flex-grow: 1;
+    max-width: 30%;
+    width: 30%;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.margin-right {
+    margin-right: 30px;
+}
+
+.label-project-metadata {
+    margin-left: 10px;
+}
+
 .section--grey {
     background: #ececec;
     position: relative;
@@ -74,11 +95,13 @@
 
 .div-space {
     width: 30%;
-    margin-right: 30px;
+}
+
+.div-metadata {
+    width: 62%;
 }
 
 input[type=text] {
-    width: 80%;
     padding: 12px 20px;
     margin: 10px 10px;
     box-sizing: border-box;
@@ -91,4 +114,14 @@ input[type=radio] {
 
 input[type=submit] {
     margin: 5px 350px;
+}
+
+.project-metadata {
+    width: 90%;
+}
+
+.copyright {
+    font: 20px "ubuntu",Verdana,Arial,sans-serif;
+    margin-left: 50px;
+    margin-top: 30px;
 }
