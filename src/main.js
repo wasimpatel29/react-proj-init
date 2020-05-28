@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './modal';
 import './main.css';
 
 class Main extends React.Component {
@@ -8,14 +9,26 @@ class Main extends React.Component {
             projectName: 'sample',
             build: 'Gradle',
             language: 'Java 8',
-            dependencies: 'SpringBoot',
+            dependencies: [],
             artifactory: 'some location',
             database: 'Oracle 12c',
             messaging: 'kafka',
-            description: 'some description of the project'
+            description: 'some description of the project',
+            showModal: false
         };
         this.alertState = this.alertState.bind(this);
+        this.handleShow = this.handleShow.bind(this);
+        this.handleHide = this.handleHide.bind(this);
     }
+
+    handleShow() {
+        this.setState({showModal: true});
+    }
+
+    handleHide() {
+        this.setState({showModal: false});
+    }
+
     alertState() {
         var print = 
         "Project name:" +
@@ -25,7 +38,7 @@ class Main extends React.Component {
         " Language:" +
         this.state.language +
         "\n Dependencies:" +
-        this.state.dependencies +
+        this.state.dependencies.map(item => item.value) +
         "\n Artifactory:" +
         this.state.artifactory +
         "\n Database:" +
@@ -52,8 +65,10 @@ class Main extends React.Component {
         });
     }
     onDependenciesChange = e => {
+        let dependenciesNew = [...this.state.dependencies];
+        dependenciesNew.push({value: e.target.value});
         this.setState({
-            dependencies: e.target.value
+            dependencies: dependenciesNew
         });
     }
     onArtifactoryChange = e => {
@@ -77,6 +92,18 @@ class Main extends React.Component {
         });
     }
     render() {
+        const modal = this.state.showModal ? (
+            <Modal>
+                <div className="wrapper">
+                    <div className="modal">
+                        <input type="checkbox" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience<br/>
+                        <input type="checkbox" name="dependencies" value="Actuator" onChange={this.onDependenciesChange}/>Actuator<br/>
+                        <input type="checkbox" name="dependencies" value="SpringBoot" onChange={this.onDependenciesChange}/>SpringBoot<br/>
+                        <input type="button" onClick={this.handleHide} value="Hide Modal" />
+                    </div>
+                </div>
+            </Modal>
+        ) : null; 
         return (
             <form>
             <link rel='stylesheet' id='all-css-0' href='https://www.capgemini.com/_static/??-eJx9jUEOgzAMBD9UYyqVA4eqbwnBUJckjmKjit83iAtVpV5XOzP4zsDJh3UkRa+KI6vhEMQvEHgormyotgVqIqemHi5YCS/JKBnmsM6cKjgDBafGHl4yKDpVssN33n94e1Lcuy7PVP0Mi8QsykZnxdH/085FMhWYpMSv9nmHqVRwtzzi/dr1bdvd2q7/AKaIX44=' type='text/css' media='all' />
@@ -147,14 +174,20 @@ class Main extends React.Component {
                 <div name="dependencies" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Dependencies</label>
                     <div class="content-text">
-                        <input type="radio" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience<br/>
-                        <input type="radio" name="dependencies" value="Actuator" onChange={this.onDependenciesChange}/>Actuator<br/>
-                        <input type="radio" name="dependencies" value="SpringBoot" onChange={this.onDependenciesChange} checked/>SpringBoot<br/>
+                        <input type="button" onClick={this.handleShow} value="Add Dependencies"/>
+                        {modal}
+                        {/* <ul>
+                            {this.state.dependencies.map(item => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul> */}
                     </div>
                 </div>
             </div>
             <br/>
-                <input type="Submit"  class="submit-button submit-button-hover" onClick={this.alertState}/>
+                {this.state.showModal? <label class="dependencies-must">Please select dependencies</label> :
+                    <input type="Submit"  class="submit-button submit-button-hover" onClick={this.alertState}/>
+                }
             </div>
             <div class="copyright">
                 <p>All rights reserved by Capgemini. <span>Copyright &copy; 2020</span></p>

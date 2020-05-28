@@ -42,6 +42,13 @@
     line-height: 48px;
 }
 
+.dependencies-must {
+    font: 20px "ubuntu-md",Verdana,Arial,sans-serif;
+    padding: 20px 20px;
+    color: #2B0A3D;
+    margin: 5px 350px;
+}
+
 .submit-button-hover:hover {
     color: white;
     background-color: #0070ad;
@@ -126,3 +133,29 @@ input[type=submit] {
     margin-top: 30px;
     margin-bottom: 20px;
 }
+
+.modal {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    min-width: 320px;
+    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+    margin-top: -1000px;
+  }
+
+  .wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal-root {
+    position: relative;
+    z-index: 1;
+  }
