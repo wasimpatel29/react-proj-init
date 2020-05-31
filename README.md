@@ -11,9 +11,12 @@ a zip file which will include code template to build application.
     * `springboot 2.x`
     * `front end editor Microsoft Visual Studio Code`
     * `back end editor Spring Tool Suite`
+    * `Express server for react testting`
 
 ### Commands to run front end
     * `npm start`
     * `npm test`
     * `npm run build`
+    * `npm install express --save`
+    * `node server.js`
     

@@ -28,26 +28,20 @@ class Main extends React.Component {
     handleHide() {
         this.setState({showModal: false});
     }
-
+    
     alertState() {
-        var print = 
-        "Project name:" +
-        this.state.projectName + 
-        "\n Build:" +
-        this.state.build +
-        " Language:" +
-        this.state.language +
-        "\n Dependencies:" +
-        this.state.dependencies.map(item => item.value) +
-        "\n Artifactory:" +
-        this.state.artifactory +
-        "\n Database:" +
-        this.state.database +
-        "\n Messaging:" +
-        this.state.messaging +
-        "\n Description:" +
-        this.state.description
-        alert(print);
+        // {
+        //     "projectName":"sample",
+        //     "build":"Gradle",
+        //     "language":"Java 8",
+        //     "dependencies":[
+         
+        //     ],
+        //     "artifactory":"some location",
+        //     "database":"Oracle 12c",
+        //     "messaging":"kafka",
+        //     "description":"some description of the project",
+        //  }
     }
     onProjectNameChange = e => {
         this.setState({
@@ -62,13 +56,6 @@ class Main extends React.Component {
     onBuildChange = e => {
         this.setState({
             build: e.target.value
-        });
-    }
-    onDependenciesChange = e => {
-        let dependenciesNew = [...this.state.dependencies];
-        dependenciesNew.push({value: e.target.value});
-        this.setState({
-            dependencies: dependenciesNew
         });
     }
     onArtifactoryChange = e => {
@@ -91,15 +78,48 @@ class Main extends React.Component {
             description: e.target.value
         });
     }
+    onDependenciesChange = e => {
+        let resilience4J = document.getElementById("Resilience4J");
+        let dependenciesNew = [];
+        if(resilience4J.checked === true) {
+            dependenciesNew.push(resilience4J);
+        }
+        let actuator = document.getElementById("Actuator");
+        if(actuator.checked === true) {
+            dependenciesNew.push(actuator);
+        }
+        let springBoot = document.getElementById("Spring-Boot");
+        if(springBoot.checked === true) {
+            dependenciesNew.push(springBoot);
+        }
+        let springReactiveWeb = document.getElementById("Spring-Reactive-Web");
+        if(springReactiveWeb.checked === true) {
+            dependenciesNew.push(springReactiveWeb);
+        }
+        let springDataJPA = document.getElementById("Spring-Data-JPA");
+        if(springDataJPA.checked === true) {
+            dependenciesNew.push(springDataJPA);
+        }
+        this.setState({
+            dependencies: dependenciesNew
+        });
+        dependenciesNew = [];
+    }
     render() {
         const modal = this.state.showModal ? (
             <Modal>
                 <div className="wrapper">
                     <div className="modal">
-                        <input type="checkbox" name="dependencies" value="Resilience" onChange={this.onDependenciesChange}/>Resilience<br/>
-                        <input type="checkbox" name="dependencies" value="Actuator" onChange={this.onDependenciesChange}/>Actuator<br/>
-                        <input type="checkbox" name="dependencies" value="SpringBoot" onChange={this.onDependenciesChange}/>SpringBoot<br/>
-                        <input type="button" onClick={this.handleHide} value="Hide Modal" />
+                        <div>
+                            <input type="checkbox" id="Resilience4J" value="Resilience4J" onClick={this.onDependenciesChange}/>Resilience4J<br/>
+                            <input type="checkbox" id="Actuator" value="Actuator" onClick={this.onDependenciesChange}/>Actuator<br/>
+                            <input type="checkbox" id="Spring-Boot" value="Spring Boot" onClick={this.onDependenciesChange}/>Spring Boot<br/>
+                            <input type="checkbox" id="Spring-Reactive-Web" value="Spring Reactive Web" onClick={this.onDependenciesChange}/>Spring Reactive Web<br/>
+                            <input type="checkbox" id="Spring-Data-JPA" value="Spring Data JPA" onClick={this.onDependenciesChange}/>Spring Data JPA<br/>
+                        </div>
+                        <div>
+                            <input type="button" class="capg-button capg-button-hover small-size margin-top-modal" value="Done" onClick={this.handleHide}/>
+                        </div>
                     </div>
                 </div>
             </Modal>
@@ -172,21 +192,16 @@ class Main extends React.Component {
             <br/>
             <div class="flex-container">
                 <div name="dependencies" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
-                    <label class="content-header">Dependencies</label>
                     <div class="content-text">
-                        <input type="button" onClick={this.handleShow} value="Add Dependencies"/>
+                        <input type="button" class="capg-button capg-button-hover small-size" value="Add Dependencies" onClick={this.handleShow}/>
                         {modal}
-                        {/* <ul>
-                            {this.state.dependencies.map(item => (
-                                <li key={item}>{item}</li>
-                            ))}
-                        </ul> */}
+                            <ul>{this.state.dependencies.map((item, index) => <li key={index+1}>{index+1}. {item.value}</li>)}</ul>
                     </div>
                 </div>
             </div>
             <br/>
                 {this.state.showModal? <label class="dependencies-must">Please select dependencies</label> :
-                    <input type="Submit"  class="submit-button submit-button-hover" onClick={this.alertState}/>
+                    <input type="button" value="Submit" class="capg-button capg-button-hover" onClick={this.alertState}/>
                 }
             </div>
             <div class="copyright">
