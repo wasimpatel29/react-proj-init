@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from './modal';
 import './main.css';
+import axios from 'axios';
 
 class Main extends React.Component {
     constructor(props) {
@@ -30,18 +31,58 @@ class Main extends React.Component {
     }
     
     alertState() {
-        // {
-        //     "projectName":"sample",
-        //     "build":"Gradle",
-        //     "language":"Java 8",
-        //     "dependencies":[
-         
-        //     ],
-        //     "artifactory":"some location",
-        //     "database":"Oracle 12c",
-        //     "messaging":"kafka",
-        //     "description":"some description of the project",
-        //  }
+
+        // var instanceParams = {
+        //     ImageId: 'ami-0d8d212151031f51c', 
+        //     InstanceType: 't2.micro',
+        //     MinCount: 1,
+        //     MaxCount: 1
+        //  };
+
+        // var AWS = require('aws-sdk');
+        // // AWS.config.loadFromPath('./config.json');
+        // var ec2 = new AWS.EC2({apiVersion: '2021-06-21'});
+        // var instancePromise = new AWS.EC2({apiVersion: '2016-11-15'}).runInstances(instanceParams).promise();
+
+        // instancePromise.then(
+        //     function(data) {
+        //       console.log(data);
+        //     }).catch(
+        //       function(err) {
+        //       console.error(err, err.stack);
+        //     });
+
+        const request = {
+            "projectName":"test",
+            "packageName":"com.cap.test",
+            "projectDescripation":"demo project",
+            "projectgroup":"com.cap",
+            "artifactory":"",
+            "language":"",
+            "projectType":"war",
+            "databaseType":"",
+            "messaging":"",
+            "springVersion": "2.5.0",
+            "JavaVersion": "jdk11",
+            "dependencies":[
+            "SpringDataJDBC","OracleDriver","Lombok"
+            ]
+        };
+
+        const headers = {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": "true"
+        };
+
+        axios.post("http://ec2-18-117-176-190.us-east-2.compute.amazonaws.com:8080/app/gentemplate/v1", request, headers)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        });    
+        
     }
     onProjectNameChange = e => {
         this.setState({
