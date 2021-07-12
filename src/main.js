@@ -75,7 +75,7 @@ class Main extends React.Component {
             "Access-Control-Allow-Credentials": "true"
         };
 
-        axios.post("http://ec2-18-117-176-190.us-east-2.compute.amazonaws.com:8080/app/gentemplate/v1", request, headers)
+        axios.post("https://ec2-18-117-176-190.us-east-2.compute.amazonaws.com:8080/app/gentemplate/v1", request, headers)
         .then(res => {
             console.log(res);
         })
