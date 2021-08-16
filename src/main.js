@@ -30,7 +30,7 @@ class Main extends React.Component {
         this.setState({showModal: false});
     }
     
-    alertState() {
+    async alertState() {
 
         // var instanceParams = {
         //     ImageId: 'ami-0d8d212151031f51c', 
@@ -75,11 +75,33 @@ class Main extends React.Component {
             "Access-Control-Allow-Credentials": "true"
         };
 
-        axios.post("http://ec2-18-117-176-190.us-east-2.compute.amazonaws.com:8080/app/gentemplate/v1", request, headers)
-        .then(res => {
-            console.log(res);
+        const responseType = {
+            responseType: 'blob'
+        }
+
+        const result = await axios.post(
+             "http://ec2-18-189-11-11.us-east-2.compute.amazonaws.com:8080/app/gentemplate/v1",
+             request, 
+             headers, 
+             responseType)
+        .then(({ data }) => {
+            const downloadUrl = window.URL.createObjectURL(new Blob([data], {type:"application/zip"} ));
+
+            const link = document.createElement('a');
+    
+            link.href = downloadUrl;
+    
+            link.setAttribute('download', 'template.zip'); //any other extension
+    
+            document.body.appendChild(link);
+    
+            link.click();
+    
+            link.remove();
+    
         })
         .catch(err => {
+            console.log('in the log');
             console.log(err);
         });    
         
