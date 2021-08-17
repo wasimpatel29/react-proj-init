@@ -30,7 +30,7 @@ class Main extends React.Component {
         this.setState({showModal: false});
     }
     
-    async alertState() {
+    alertState() {
 
         // var instanceParams = {
         //     ImageId: 'ami-0d8d212151031f51c', 
@@ -70,35 +70,35 @@ class Main extends React.Component {
         };
 
         const headers = {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Credentials": "true"
         };
 
         const responseType = {
-            responseType: 'blob'
+            "responseType": "arraybuffer"
         }
 
-        const result = await axios.post(
+        axios.post(
              "http://ec2-18-189-11-11.us-east-2.compute.amazonaws.com:8080/app/gentemplate/v1",
              request, 
-             headers, 
-             responseType)
-        .then(({ data }) => {
-            const downloadUrl = window.URL.createObjectURL(new Blob([data], {type:"application/zip"} ));
-
+             {
+                'responseType': 'arraybuffer',
+                'headers': {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true"
+                }
+             })
+        .then( response  => {
+            // const downloadUrl = window.URL.createObjectURL(new Blob([response.data], {type:"application/zip"} ));
+            const downloadUrl = window.URL.createObjectURL(new Blob([response.data], {type:"application/zip"}));
             const link = document.createElement('a');
-    
             link.href = downloadUrl;
-    
             link.setAttribute('download', 'template.zip'); //any other extension
-    
             document.body.appendChild(link);
-    
             link.click();
-    
-            link.remove();
-    
+            // link.remove();
         })
         .catch(err => {
             console.log('in the log');
