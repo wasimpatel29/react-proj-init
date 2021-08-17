@@ -15,7 +15,12 @@ class Main extends React.Component {
             database: 'Oracle 12c',
             messaging: 'kafka',
             description: 'some description of the project',
-            showModal: false
+            showModal: false,
+            projectType: 'war',
+            packageName: 'com.cap.test',
+            JavaVersion: 'jdk11',
+            projectgroup: 'capgemini',
+            springVersion:'2.5.0'
         };
         this.alertState = this.alertState.bind(this);
         this.handleShow = this.handleShow.bind(this);
@@ -31,42 +36,19 @@ class Main extends React.Component {
     }
     
     alertState() {
-
-        // var instanceParams = {
-        //     ImageId: 'ami-0d8d212151031f51c', 
-        //     InstanceType: 't2.micro',
-        //     MinCount: 1,
-        //     MaxCount: 1
-        //  };
-
-        // var AWS = require('aws-sdk');
-        // // AWS.config.loadFromPath('./config.json');
-        // var ec2 = new AWS.EC2({apiVersion: '2021-06-21'});
-        // var instancePromise = new AWS.EC2({apiVersion: '2016-11-15'}).runInstances(instanceParams).promise();
-
-        // instancePromise.then(
-        //     function(data) {
-        //       console.log(data);
-        //     }).catch(
-        //       function(err) {
-        //       console.error(err, err.stack);
-        //     });
-
         const request = {
-            "projectName":"test",
-            "packageName":"com.cap.test",
-            "projectDescripation":"demo project",
-            "projectgroup":"com.cap",
-            "artifactory":"",
-            "language":"",
-            "projectType":"war",
-            "databaseType":"",
-            "messaging":"",
-            "springVersion": "2.5.0",
-            "JavaVersion": "jdk11",
-            "dependencies":[
-            "SpringDataJDBC","OracleDriver","Lombok"
-            ]
+            "projectName":this.state.projectName,
+            "packageName":this.state.packageName,
+            "projectDescripation":this.state.description,
+            "projectgroup":this.state.projectgroup,
+            "artifactory":this.state.artifactory,
+            "language":this.state.language,
+            "projectType":this.state.projectType,
+            "databaseType":this.state.database,
+            "messaging":this.state.messaging,
+            "springVersion":this.state.springVersion,
+            "JavaVersion":this.state.JavaVersion,
+            "dependencies":["SpringDataJDBC","OracleDriver","Lombok"]
         };
 
         const headers = {
@@ -91,14 +73,12 @@ class Main extends React.Component {
                 }
              })
         .then( response  => {
-            // const downloadUrl = window.URL.createObjectURL(new Blob([response.data], {type:"application/zip"} ));
             const downloadUrl = window.URL.createObjectURL(new Blob([response.data], {type:"application/zip"}));
             const link = document.createElement('a');
             link.href = downloadUrl;
-            link.setAttribute('download', 'template.zip'); //any other extension
+            link.setAttribute('download', 'template.zip');
             document.body.appendChild(link);
             link.click();
-            // link.remove();
         })
         .catch(err => {
             console.log('in the log');
@@ -141,6 +121,21 @@ class Main extends React.Component {
             description: e.target.value
         });
     }
+    onProjectGroupChange = e => {
+        this.setState({
+            projectgroup: e.target.value
+        });
+    }
+    onPackageChange = e => {
+        this.setState({
+            packageName: e.target.value
+        });
+    }
+    onArtifactoryChange = e => {
+        this.setState({
+            artifactory: e.target.value
+        });
+    }
     onDependenciesChange = e => {
         let resilience4J = document.getElementById("Resilience4J");
         let dependenciesNew = [];
@@ -173,7 +168,7 @@ class Main extends React.Component {
             <Modal>
                 <div className="wrapper">
                     <div className="modal">
-                        <div>
+                        <div>   
                             <input type="checkbox" id="Resilience4J" value="Resilience4J" onClick={this.onDependenciesChange}/>Resilience4J<br/>
                             <input type="checkbox" id="Actuator" value="Actuator" onClick={this.onDependenciesChange}/>Actuator<br/>
                             <input type="checkbox" id="Spring-Boot" value="Spring Boot" onClick={this.onDependenciesChange}/>Spring Boot<br/>
@@ -202,15 +197,15 @@ class Main extends React.Component {
                 <div name="project-metadata" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Project Metadata</label>
                         <label class="label-project-metadata">Name</label>
-                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <input type="text" class="project-metadata" onChange={this.onProjectNameChange}/>
                         <label class="label-project-metadata">Description</label> 
                         <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
                         <label class="label-project-metadata">Group</label> 
-                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <input type="text" class="project-metadata" onChange={this.onProjectGroupChange}/>
                         <label class="label-project-metadata">Package Name</label> 
-                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <input type="text" class="project-metadata" onChange={this.onPackageChange}/>
                         <label class="label-project-metadata">Artifact</label> 
-                        <input type="text" class="project-metadata" onChange={this.onDescriptionChange}/>
+                        <input type="text" class="project-metadata" onChange={this.onArtifactoryChange}/>
                 </div>
                 <div class="flex-column">
                     <div name="language" class="card_default card_default--hovered hover--grey card_default--grey">
