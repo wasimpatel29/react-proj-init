@@ -101,6 +101,11 @@ class Main extends React.Component {
             build: e.target.value
         });
     }
+    onDeployableChange = e => {
+        this.setState({
+            projectType: e.target.value
+        });
+    }
     onArtifactoryChange = e => {
         this.setState({
             artifactory: e.target.value
@@ -137,26 +142,18 @@ class Main extends React.Component {
         });
     }
     onDependenciesChange = e => {
-        let resilience4J = document.getElementById("Resilience4J");
         let dependenciesNew = [];
-        if(resilience4J.checked === true) {
-            dependenciesNew.push(resilience4J);
+               let springDataJDBC = document.getElementById("SpringDataJDBC");
+        if(springDataJDBC.checked === true) {
+            dependenciesNew.push(springDataJDBC);
         }
-        let actuator = document.getElementById("Actuator");
-        if(actuator.checked === true) {
-            dependenciesNew.push(actuator);
+        let oracleDriver = document.getElementById("OracleDriver");
+        if(oracleDriver.checked === true) {
+            dependenciesNew.push(oracleDriver);
         }
-        let springBoot = document.getElementById("Spring-Boot");
-        if(springBoot.checked === true) {
-            dependenciesNew.push(springBoot);
-        }
-        let springReactiveWeb = document.getElementById("Spring-Reactive-Web");
-        if(springReactiveWeb.checked === true) {
-            dependenciesNew.push(springReactiveWeb);
-        }
-        let springDataJPA = document.getElementById("Spring-Data-JPA");
-        if(springDataJPA.checked === true) {
-            dependenciesNew.push(springDataJPA);
+        let lombok = document.getElementById("Lombok");
+        if(lombok.checked === true) {
+            dependenciesNew.push(lombok);
         }
         this.setState({
             dependencies: dependenciesNew
@@ -169,11 +166,9 @@ class Main extends React.Component {
                 <div className="wrapper">
                     <div className="modal">
                         <div>   
-                            <input type="checkbox" id="Resilience4J" value="Resilience4J" onClick={this.onDependenciesChange}/>Resilience4J<br/>
-                            <input type="checkbox" id="Actuator" value="Actuator" onClick={this.onDependenciesChange}/>Actuator<br/>
-                            <input type="checkbox" id="Spring-Boot" value="Spring Boot" onClick={this.onDependenciesChange}/>Spring Boot<br/>
-                            <input type="checkbox" id="Spring-Reactive-Web" value="Spring Reactive Web" onClick={this.onDependenciesChange}/>Spring Reactive Web<br/>
-                            <input type="checkbox" id="Spring-Data-JPA" value="Spring Data JPA" onClick={this.onDependenciesChange}/>Spring Data JPA<br/>
+                            <input type="checkbox" id="SpringDataJDBC" value="SpringDataJDBC" onClick={this.onDependenciesChange}/>SpringDataJDBC<br/>
+                            <input type="checkbox" id="OracleDriver" value="OracleDriver" onClick={this.onDependenciesChange}/>OracleDriver<br/>
+                            <input type="checkbox" id="Lombok" value="Lombok" onClick={this.onDependenciesChange}/>Lombok<br/>
                         </div>
                         <div>
                             <input type="button" class="capg-button capg-button-hover small-size margin-top-modal" value="Done" onClick={this.handleHide}/>
@@ -212,15 +207,24 @@ class Main extends React.Component {
                         <label class="content-header">Language</label>
                         <div class="content-text">
                             <input type="radio" name="language" value="Java 8" onChange={this.onLanguageRadioChange} checked/>Java 8<br/>
-                            <input type="radio" name="language" value="Kotlin" onChange={this.onLanguageRadioChange}/>Kotlin<br/>
-                            <input type="radio" name="language" value="Groovy" onChange={this.onLanguageRadioChange}/>Groovy<br/>
+                            <input type="radio" name="language" value="Java 11" onChange={this.onLanguageRadioChange} />Java 11<br/>
+                            <input type="radio" name="language" value="Java 17" onChange={this.onLanguageRadioChange} />Java 17<br/>
+                            <input type="radio" name="language" value="Kotlin" onChange={this.onLanguageRadioChange} disabled="true"/><label class="content-text-disabled">Kotlin</label><br/>
+                            <input type="radio" name="language" value="Groovy" onChange={this.onLanguageRadioChange} disabled="true"/><label class="content-text-disabled">Groovy</label><br/>
                         </div>
                     </div>
                     <div name="project-type" class="margin-top card_default card_default--hovered hover--grey card_default--grey">
                         <label class="content-header ">Project Type</label>
                         <div class="content-text">
-                            <input type="radio" name="build" value="Gradle" onChange={this.onBuildChange} checked/>Gradle<br/>
-                            <input type="radio" name="build" value="Maven" onChange={this.onBuildChange}/>Maven<br/>
+                            <input type="radio" name="build" value="Gradle" onChange={this.onBuildChange} checked/><label >Gradle</label><br/>
+                            <input type="radio" name="build" value="Maven" onChange={this.onBuildChange} disabled="true"/><label class="content-text-disabled">Maven</label><br/>
+                        </div>
+                    </div>
+                    <div name="deployable-type" class="margin-top card_default card_default--hovered hover--grey card_default--grey">
+                        <label class="content-header ">Deployable Type</label>
+                        <div class="content-text">
+                            <input type="radio" name="deployable" value="war" onChange={this.onDeployableChange} checked/><label >.war</label><br/>
+                            <input type="radio" name="deployable" value="jar" onChange={this.onDeployableChange} disabled="true"/><label class="content-text-disabled">.jar</label><br/>
                         </div>
                     </div>
                 </div>
@@ -230,10 +234,10 @@ class Main extends React.Component {
                 <div name="messaging" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Messaging</label>
                     <div class="content-text">
-                        <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} checked/>Kafka<br/>
-                        <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange}/>RabbitMQ<br/>
-                        <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange}/>JMS<br/>
-                        <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange}/>ActiveMQ<br/>
+                        <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange} checked /><label>ActiveMQ</label><br/>
+                        <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">Kafka</label><br/>
+                        <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">RabbitMQ</label><br/>
+                        <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">JMS</label><br/>
                     </div>
                 </div>
                 <br/>
@@ -244,6 +248,27 @@ class Main extends React.Component {
                         <input type="radio" name="database" value="Mongo DB" onChange={this.onDatabaseChange}/>Mongo DB<br/>
                         <input type="radio" name="database" value="MySql" onChange={this.onDatabaseChange}/>MySql<br/>
                         <input type="radio" name="database" value="DB2" onChange={this.onDatabaseChange}/>DB2<br/>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container">
+                <div name="messaging" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
+                    <label class="content-header">Type of Microservice</label>
+                    <div class="content-text">
+                        <input type="radio" name="typeOfMicroservice" value="Rest" checked/>Rest<br/>
+                        <input type="radio" name="typeOfMicroservice" value="Reactive" disabled="true" /><label class="content-text-disabled">Reactive</label><br/>
+                        <input type="radio" name="typeOfMicroservice" value="SOAP" disabled="true" /><label class="content-text-disabled">SOAP</label><br/>
+                    </div>
+                </div>
+                <br/>
+                <div name="database" class="div-space card_default card_default--hovered hover--grey card_default--grey">
+                    <label class="content-header">Platform</label>
+                    <div class="content-text">
+                        <input type="radio" name="platform" value="On Premises" checked/><label >On Premises</label><br/>
+                        <input type="radio" name="platform" value="PCF" disabled="true" /><label class="content-text-disabled">PCF</label><br/>
+                        <input type="radio" name="platform" value="AWS" disabled="true" /><label class="content-text-disabled">AWS</label><br/>
+                        <input type="radio" name="platform" value="Azure" disabled="true" /><label class="content-text-disabled">Azure</label><br/>
+                        <input type="radio" name="platform" value="GCP" disabled="true" /><label class="content-text-disabled">GCP</label><br/>
                     </div>
                 </div>
             </div>
@@ -259,7 +284,7 @@ class Main extends React.Component {
             </div>
             <br/>
                 {this.state.showModal? <label class="dependencies-must">Please select dependencies</label> :
-                    <input type="button" value="Submit" class="capg-button capg-button-hover" onClick={this.alertState}/>
+                    <input type="button" value="Generate" class="capg-button capg-button-hover" onClick={this.alertState}/>
                 }
             </div>
             <div class="copyright">
