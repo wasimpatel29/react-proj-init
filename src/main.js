@@ -206,9 +206,9 @@ class Main extends React.Component {
                     <div name="language" class="card_default card_default--hovered hover--grey card_default--grey">
                         <label class="content-header">Language</label>
                         <div class="content-text">
-                            <input type="radio" name="language" value="Java 8" onChange={this.onLanguageRadioChange} checked/>Java 8<br/>
-                            <input type="radio" name="language" value="Java 11" onChange={this.onLanguageRadioChange} />Java 11<br/>
-                            <input type="radio" name="language" value="Java 17" onChange={this.onLanguageRadioChange} />Java 17<br/>
+                            <input type="radio" name="language" value="jdk8" onChange={this.onLanguageRadioChange} checked/>Java 8<br/>
+                            <input type="radio" name="language" value="jdk17" onChange={this.onLanguageRadioChange} />Java 11<br/>
+                            <input type="radio" name="language" value="jdk17" onChange={this.onLanguageRadioChange} />Java 17<br/>
                             <input type="radio" name="language" value="Kotlin" onChange={this.onLanguageRadioChange} disabled="true"/><label class="content-text-disabled">Kotlin</label><br/>
                             <input type="radio" name="language" value="Groovy" onChange={this.onLanguageRadioChange} disabled="true"/><label class="content-text-disabled">Groovy</label><br/>
                         </div>
@@ -234,7 +234,7 @@ class Main extends React.Component {
                 <div name="messaging" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Messaging</label>
                     <div class="content-text">
-                        <input type="radio" name="messaging" value="ActiveMQ" onChange={this.onMessagingChange} checked /><label>ActiveMQ</label><br/>
+                        <input type="radio" name="messaging" value="activeMQ" onChange={this.onMessagingChange} checked /><label>ActiveMQ</label><br/>
                         <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">Kafka</label><br/>
                         <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">RabbitMQ</label><br/>
                         <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">JMS</label><br/>
@@ -245,8 +245,8 @@ class Main extends React.Component {
                     <label class="content-header">Database</label>
                     <div class="content-text">
                         <input type="radio" name="database" value="Oracle 12c" onChange={this.onDatabaseChange} disabled="true"/>Oracle 12c<br/>
-                        <input type="radio" name="database" value="Mongo DB" onChange={this.onDatabaseChange} checked/>Mongo DB<br/>
-                        <input type="radio" name="database" value="MySql" onChange={this.onDatabaseChange}/>MySql<br/>
+                        <input type="radio" name="database" value="mongoDB" onChange={this.onDatabaseChange} checked/>Mongo DB<br/>
+                        <input type="radio" name="database" value="mySql" onChange={this.onDatabaseChange}/>MySql<br/>
                         <input type="radio" name="database" value="DB2" onChange={this.onDatabaseChange} disabled="true" />DB2<br/>
                     </div>
                 </div>
