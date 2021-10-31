@@ -19,7 +19,8 @@ class Main extends React.Component {
             packageName: 'com.capg',
             JavaVersion: 'jdk8',
             projectgroup: 'capgemini',
-            springVersion:'2.5.0'
+            springVersion:'2.5.0',
+            language: 'jdk8'
         };
         this.alertState = this.alertState.bind(this);
         this.handleShow = this.handleShow.bind(this);
@@ -92,7 +93,7 @@ class Main extends React.Component {
     }
     onLanguageRadioChange = e => {
         this.setState({
-            language: e.target.value
+            JavaVersion: e.target.value
         });
     }
     onBuildChange = e => {
