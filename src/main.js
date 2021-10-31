@@ -48,7 +48,8 @@ class Main extends React.Component {
             "messaging":this.state.messaging,
             "springVersion":this.state.springVersion,
             "JavaVersion":this.state.language,
-            "dependencies":["SpringDataJDBC","OracleDriver","Lombok"]
+            "dependencies":this.state.dependencies
+            // "dependencies":["SpringDataJDBC","OracleDriver","Lombok"]
         };
 
         const headers = {
