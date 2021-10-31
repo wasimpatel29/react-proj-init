@@ -7,18 +7,17 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            projectName: 'sample',
+            projectName: 'CapgeminiSampleTemplate',
             build: 'Gradle',
-            language: 'Java 8',
             dependencies: [],
-            artifactory: 'some location',
-            database: 'Oracle 12c',
-            messaging: 'kafka',
-            description: 'some description of the project',
+            artifactory: '',
+            database: 'mongoDB',
+            messaging: 'activeMQ',
+            description: '',
             showModal: false,
             projectType: 'war',
-            packageName: 'com.cap.test',
-            JavaVersion: 'jdk11',
+            packageName: 'com.capg',
+            JavaVersion: 'jdk8',
             projectgroup: 'capgemini',
             springVersion:'2.5.0'
         };
@@ -47,7 +46,7 @@ class Main extends React.Component {
             "databaseType":this.state.database,
             "messaging":this.state.messaging,
             "springVersion":this.state.springVersion,
-            "JavaVersion":this.state.JavaVersion,
+            "JavaVersion":this.state.language,
             "dependencies":["SpringDataJDBC","OracleDriver","Lombok"]
         };
 
