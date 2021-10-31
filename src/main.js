@@ -257,7 +257,6 @@ class Main extends React.Component {
                     <div class="content-text">
                         <input type="radio" name="typeOfMicroservice" value="Rest" checked/>Rest<br/>
                         <input type="radio" name="typeOfMicroservice" value="Reactive" disabled="true" /><label class="content-text-disabled">Reactive</label><br/>
-                        <input type="radio" name="typeOfMicroservice" value="SOAP" disabled="true" /><label class="content-text-disabled">SOAP</label><br/>
                     </div>
                 </div>
                 <br/>
