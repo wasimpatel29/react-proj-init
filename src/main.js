@@ -244,10 +244,10 @@ class Main extends React.Component {
                 <div name="database" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Database</label>
                     <div class="content-text">
-                        <input type="radio" name="database" value="Oracle 12c" onChange={this.onDatabaseChange} checked/>Oracle 12c<br/>
-                        <input type="radio" name="database" value="Mongo DB" onChange={this.onDatabaseChange}/>Mongo DB<br/>
+                        <input type="radio" name="database" value="Oracle 12c" onChange={this.onDatabaseChange} disabled="true"/>Oracle 12c<br/>
+                        <input type="radio" name="database" value="Mongo DB" onChange={this.onDatabaseChange} checked/>Mongo DB<br/>
                         <input type="radio" name="database" value="MySql" onChange={this.onDatabaseChange}/>MySql<br/>
-                        <input type="radio" name="database" value="DB2" onChange={this.onDatabaseChange}/>DB2<br/>
+                        <input type="radio" name="database" value="DB2" onChange={this.onDatabaseChange} disabled="true" />DB2<br/>
                     </div>
                 </div>
             </div>
