@@ -188,7 +188,7 @@ class Main extends React.Component {
             <img src="https://www.capgemini.com/wp-content/themes/capgemini-komposite/assets/images/logo.svg" alt="Capgemini Worldwide"/>
             </div>
             <p class="hero_title">
-                Project initializer will help you build a template project based on the details.
+                Microservice initializer will help you build a running project based on the details provided.
             </p>
             <br/>
             <div class="page-conatiner">
@@ -228,7 +228,7 @@ class Main extends React.Component {
                         <label class="content-header ">Deployable Type</label>
                         <div class="content-text">
                             <input type="radio" name="deployable" value="war" onChange={this.onDeployableChange} checked/><label >.war</label><br/>
-                            <input type="radio" name="deployable" value="jar" onChange={this.onDeployableChange} disabled="true"/><label class="content-text-disabled">.jar</label><br/>
+                            <input type="radio" name="deployable" value="jar" onChange={this.onDeployableChange} /><label class="content-text-disabled">.jar</label><br/>
                         </div>
                     </div>
                 </div>
@@ -286,6 +286,10 @@ class Main extends React.Component {
                             <ul>{this.state.dependencies.map((item, index) => <li key={index+1}>{index+1}. {item.value}</li>)}</ul>
                     </div>
                 </div>
+                <div name="database" class="div-space card_default card_default--hovered hover--grey card_default--grey">
+                    <label class="content-header">Upload API Json</label>
+                    <input type="file" id="myFile" name="filename"/>
+                </div>   
             </div>
             <br/>
                 {this.state.showModal? <label class="dependencies-must">Please select dependencies</label> :
