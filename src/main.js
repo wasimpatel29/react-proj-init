@@ -11,8 +11,8 @@ class Main extends React.Component {
             build: 'Gradle',
             dependencies: [],
             artifactory: '',
-            database: 'mongoDB',
-            messaging: 'activeMQ',
+            database: '',
+            messaging: '',
             description: '',
             showModal: false,
             projectType: 'war',
@@ -48,8 +48,8 @@ class Main extends React.Component {
             "messaging":this.state.messaging,
             "springVersion":this.state.springVersion,
             "JavaVersion":this.state.language,
-            "dependencies":this.state.dependencies
-            // "dependencies":["SpringDataJDBC","OracleDriver","Lombok"]
+            // "dependencies":this.state.dependencies
+            "dependencies":["SpringDataJDBC","OracleDriver","Lombok"]
         };
 
         const headers = {
@@ -144,17 +144,20 @@ class Main extends React.Component {
     }
     onDependenciesChange = e => {
         let dependenciesNew = [];
-               let springDataJDBC = document.getElementById("SpringDataJDBC");
+        let springDataJDBC = document.getElementById("SpringDataJDBC");
         if(springDataJDBC.checked === true) {
             dependenciesNew.push(springDataJDBC);
+            this.state.dependencies.push("SpringDataJDBC")
         }
         let oracleDriver = document.getElementById("OracleDriver");
         if(oracleDriver.checked === true) {
             dependenciesNew.push(oracleDriver);
+            this.state.dependencies.push("OracleDriver")
         }
         let lombok = document.getElementById("Lombok");
         if(lombok.checked === true) {
             dependenciesNew.push(lombok);
+            this.state.dependencies.push("Lombok")
         }
         this.setState({
             dependencies: dependenciesNew
@@ -235,7 +238,8 @@ class Main extends React.Component {
                 <div name="messaging" class="div-space margin-right card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Messaging</label>
                     <div class="content-text">
-                        <input type="radio" name="messaging" value="activeMQ" onChange={this.onMessagingChange} checked /><label>ActiveMQ</label><br/>
+                        <input type="radio" name="messaging" value="" onChange={this.onMessagingChange} checked /><label>None</label><br/>
+                        <input type="radio" name="messaging" value="activeMQ" onChange={this.onMessagingChange} /><label>ActiveMQ</label><br/>
                         <input type="radio" name="messaging" value="Kafka" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">Kafka</label><br/>
                         <input type="radio" name="messaging" value="RabbitMQ" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">RabbitMQ</label><br/>
                         <input type="radio" name="messaging" value="JMS" onChange={this.onMessagingChange} disabled="true" /><label class="content-text-disabled">JMS</label><br/>
@@ -245,9 +249,10 @@ class Main extends React.Component {
                 <div name="database" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Database</label>
                     <div class="content-text">
-                        <input type="radio" name="database" value="Oracle 12c" onChange={this.onDatabaseChange} disabled="true"/>Oracle 12c<br/>
-                        <input type="radio" name="database" value="mongoDB" onChange={this.onDatabaseChange} checked/>Mongo DB<br/>
+                        <input type="radio" name="database" value="" onChange={this.onDatabaseChange} checked/>None<br/>
+                        <input type="radio" name="database" value="mongoDB" onChange={this.onDatabaseChange} />Mongo DB<br/>
                         <input type="radio" name="database" value="mySql" onChange={this.onDatabaseChange}/>MySql<br/>
+                        <input type="radio" name="database" value="Oracle 12c" onChange={this.onDatabaseChange} disabled="true"/>Oracle 12c<br/>
                         <input type="radio" name="database" value="DB2" onChange={this.onDatabaseChange} disabled="true" />DB2<br/>
                     </div>
                 </div>
