@@ -46,6 +46,13 @@
     line-height: 48px;
 }
 
+.capg-button-disabled {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font: 1rem/1 "ubuntu-md",Verdana,Arial,sans-serif;
+    line-height:20px;
+}
+
 
 .capg-button-hover:hover {
     color: white;

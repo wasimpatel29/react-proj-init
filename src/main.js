@@ -288,7 +288,7 @@ class Main extends React.Component {
                 </div>
                 <div name="database" class="div-space card_default card_default--hovered hover--grey card_default--grey">
                     <label class="content-header">Upload API Json</label>
-                    <input type="file" id="myFile" name="filename"/>
+                    <input type="file" id="myFile" name="filename" disabled="true" class="capg-button-disabled"/>
                 </div>   
             </div>
             <br/>
