@@ -228,7 +228,7 @@ class Main extends React.Component {
                         <label class="content-header ">Deployable Type</label>
                         <div class="content-text">
                             <input type="radio" name="deployable" value="war" onChange={this.onDeployableChange} checked/><label >.war</label><br/>
-                            <input type="radio" name="deployable" value="jar" onChange={this.onDeployableChange} /><label class="content-text-disabled">.jar</label><br/>
+                            <input type="radio" name="deployable" value="jar" onChange={this.onDeployableChange} /><label >.jar</label><br/>
                         </div>
                     </div>
                 </div>
